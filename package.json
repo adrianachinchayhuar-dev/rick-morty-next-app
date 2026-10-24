@@ -1,12 +1,13 @@
 {
-  "name": "next-ssg-isr-app",
+  "name": "rick-morty-next-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "node scripts/build.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --test tests/characters.test.mjs"
   },
   "dependencies": {
     "next": "16.4.3",
@@ -15,7 +16,7 @@
     "react-icons": "^5.7.0"
   },
   "devDependencies": {
-    "@tailwindcss/turbopack": "^4",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

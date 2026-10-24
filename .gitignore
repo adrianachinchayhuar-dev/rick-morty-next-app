@@ -19,6 +19,7 @@
 
 # production
 /build
+/.cache/portal-dex/
 
 # misc
 .DS_Store

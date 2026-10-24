@@ -1,26 +1,204 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #0b1010;
+  --color-foreground: #eef3ed;
+  --font-sans: Arial, Helvetica, sans-serif;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+  background: #0b1010;
+  color: #eef3ed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.shell {
+  width: min(1200px, 90%);
+  margin-inline: auto;
+}
+.site-header {
+  border-bottom: 1px solid #ffffff12;
+  background: #0b1010ed;
+}
+a,
+button {
+  transition:
+    color 0.2s,
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+nav a:hover,
+footer a:hover {
+  color: #bef264;
+}
+:focus-visible {
+  outline: 2px solid #bef264;
+  outline-offset: 5px;
+}
+.eyebrow {
+  font: 600 11px/1.5 monospace;
+  letter-spacing: 0.16em;
+  color: #bef264;
+}
+.logo-portal {
+  width: 28px;
+  height: 28px;
+  border: 5px solid #bef264;
+  border-radius: 50%;
+  box-shadow: 0 0 16px #bef26450;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  border: 1px solid #ffffff25;
+  border-radius: 9px;
+  padding: 13px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.button:hover {
+  border-color: #bef264;
+  background: #bef26410;
+}
+.button.primary {
+  background: #bef264;
+  color: #152008;
+  border-color: #bef264;
+}
+.button.primary:hover {
+  background: #d9f99d;
+  transform: translateY(-2px);
+}
+.button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.feature-card,
+.character-card {
+  display: block;
+  padding: 22px;
+  background: #131b19;
+  border: 1px solid #ffffff10;
+  border-radius: 18px;
+}
+.feature-card:hover,
+.character-card:hover {
+  border-color: #bef26470;
+  transform: translateY(-4px);
+}
+.character-card {
+  padding: 12px 12px 20px;
+}
+.character-card > div + div {
+  padding-inline: 8px;
+}
+.image-id {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: #0b1010cc;
+  padding: 4px 9px;
+  border-radius: 6px;
+  color: #bef264;
+  font: 12px monospace;
+}
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #94a3b8;
+}
+.status-dot.alive {
+  background: #bef264;
+  box-shadow: 0 0 8px #bef26455;
+}
+.status-dot.dead {
+  background: #fb7185;
+}
+.portal-scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 400px;
+  background: radial-gradient(ellipse, #8adc1918, transparent 65%);
+}
+.portal-ring {
+  width: 310px;
+  height: 360px;
+  border-radius: 49% 51% 45% 55%;
+  border: 16px solid #b3f153;
+  background: repeating-radial-gradient(
+    ellipse at 45% 55%,
+    #163a20 0 6px,
+    #79bd2c 9px 13px,
+    #bbef52 17px 19px,
+    #386b20 24px 30px
+  );
+  box-shadow:
+    0 0 35px #9aef4250,
+    inset 0 0 30px #d1fb70;
+  transform: rotate(-20deg);
+  animation: portal-breathe 7s ease-in-out infinite;
+}
+.portal-label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #8d9a8c;
+  font: 10px/1.8 monospace;
+  letter-spacing: 0.16em;
+}
+input,
+select {
+  width: 100%;
+  margin-top: 8px;
+  border: 1px solid #ffffff25;
+  border-radius: 9px;
+  background: #0b1010;
+  color: #eef3ed;
+  padding: 12px;
+}
+label {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+.detail-field {
+  padding: 18px;
+  background: #131b19;
+  border: 1px solid #ffffff10;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+.detail-field dt {
+  color: #94a3b8;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+@keyframes portal-breathe {
+  50% {
+    transform: rotate(-13deg) scale(0.95);
+    filter: hue-rotate(12deg);
   }
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 1023px) {
+  .portal-scene {
+    min-height: 320px;
+  }
+  .portal-ring {
+    width: 230px;
+    height: 270px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

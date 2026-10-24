@@ -1,4 +1,3 @@
-
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -6,7 +5,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "raw.githubusercontent.com",
+        hostname: "rickandmortyapi.com",
+        pathname: "/api/character/avatar/**",
       },
     ],
   },
@@ -18,15 +18,6 @@ const nextConfig: NextConfig = {
   // cacheComponents: true,
 
   // partialPrefetching: true,
-
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
 };
 
 export default nextConfig;
